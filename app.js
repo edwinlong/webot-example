@@ -1,11 +1,35 @@
 var express = require('express');
+var path = require('path');
 var webot = require('weixin-robot');
-
+//var wechat = require('wechat-api')(APP_ID, SECRET);
+var logger = require('morgan');
 var log = require('debug')('webot-example:log');
 var verbose = require('debug')('webot-example:verbose');
 
 // 启动服务
 var app = express();
+
+
+var winston = require('winston');
+
+//添加新的token，返回post内容
+logger.token('body', function(req, res){ return 'req.body : '+ JSON.stringify(req.body); })
+
+var winstonlog = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)(),
+      new (winston.transports.File)({ filename: 'logs/somefile.log',timestamp:'true', 
+            maxsize: 10485760, //日志文件的大小，即java中的roller log
+            maxFiles: 10  })
+    ]
+  });
+var winstonStream = {
+    write: function(message, encoding){
+        //winston.info(message);
+        winstonlog.info(message.slice(0, -1));	//去掉行尾的换行
+    }
+};  
+
 
 // 实际使用时，这里填写你在微信公共平台后台填写的 token
 var wx_token = process.env.WX_TOKEN || 'keyboardcat123';
@@ -27,6 +51,8 @@ webot.watch(app, { token: wx_token, path: '/wechat' });
 // 后面指定的 path 不可为前面实例的子目录
 webot2.watch(app, { token: wx_token2, path: '/wechat_2' });
 
+app.use(logger({ format: '[:remote-addr] - [:method :url] [:status] [:body]', stream : winstonStream }));
+
 // 如果需要 session 支持，sessionStore 必须放在 watch 之后
 app.use(express.cookieParser());
 // 为了使用 waitRule 功能，需要增加 session 支持
@@ -37,8 +63,11 @@ app.use(express.session({
 // 在生产环境，你应该将此处的 store 换为某种永久存储。
 // 请参考 http://expressjs.com/2x/guide.html#session-support
 
+app.use(express.static(path.join(__dirname, 'logs')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // 在环境变量提供的 $PORT 或 3000 端口监听
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 app.listen(port, function(){
   log("Listening on %s", port);
 });

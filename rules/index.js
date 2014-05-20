@@ -26,18 +26,17 @@ module.exports = exports = function(webot){
     },
     handler: function(info){
       var reply = {
-        title: '感谢你收听webot机器人',
-        pic: 'https://raw.github.com/node-webot/webot-example/master/qrcode.jpg',
-        url: 'https://github.com/node-webot/webot-example',
+        title: '感谢你访问微信公众测试号-LF',
+        pic: 'villagey.jpg',
+        url: 'welcome.html',
         description: [
           '你可以试试以下指令:',
             'game : 玩玩猜数字的游戏吧',
             's+空格+关键词 : 我会帮你百度搜索喔',
-            's+空格+nde : 可以试试我的纠错能力',
+            //'s+空格+nde : 可以试试我的纠错能力',
             '使用「位置」发送你的经纬度',
             '重看本指令请回复help或问号',
-            '更多指令请回复more',
-            'PS: 点击下面的「查看全文」将跳转到我的github页'
+            '更多指令请回复more'
         ].join('\n')
       };
       // 返回值如果是list，则回复图文消息列表
