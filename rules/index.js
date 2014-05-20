@@ -27,8 +27,8 @@ module.exports = exports = function(webot){
     handler: function(info){
       var reply = {
         title: '感谢你访问微信公众测试号-LF',
-        pic: 'villagey.jpg',
-        url: 'welcome.html',
+        pic: 'http://wxtoy.herokuapp.com/villagey.jpg',
+        url: 'http://wxtoy.herokuapp.com/welcome.html',
         description: [
           '你可以试试以下指令:',
             'game : 玩玩猜数字的游戏吧',
