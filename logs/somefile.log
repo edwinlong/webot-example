@@ -1,0 +1,9 @@
+{"level":"info","message":"[183.129.219.202] - [GET /] [404] [req.body : undefined]","timestamp":"2014-05-20T05:06:55.214Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /somefile.log] [200] [req.body : undefined]","timestamp":"2014-05-20T05:07:14.949Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /somefile.log] [200] [req.body : undefined]","timestamp":"2014-05-20T05:07:15.899Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /favicon.ico] [404] [req.body : undefined]","timestamp":"2014-05-20T05:07:16.755Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /favicon.ico] [404] [req.body : undefined]","timestamp":"2014-05-20T05:07:17.321Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /welcome.html] [200] [req.body : undefined]","timestamp":"2014-05-20T05:07:26.704Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /villagey.jpg] [200] [req.body : undefined]","timestamp":"2014-05-20T05:07:28.190Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /welcome.html] [200] [req.body : undefined]","timestamp":"2014-05-20T05:08:10.788Z"}
+{"level":"info","message":"[183.129.219.202] - [GET /villagey.jpg] [304] [req.body : undefined]","timestamp":"2014-05-20T05:08:11.354Z"}
